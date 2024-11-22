@@ -1,10 +1,10 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/inconshreveable/go-update"
 )
@@ -13,8 +13,10 @@ type Response struct {
 	Url string `json:"url"`
 }
 
-func main() {
+//go:embed version.txt
+var version string
 
+func main() {
 	var latestReleaseUrl = "https://api.github.com/repos/1337jazz/go-update-test/releases/latest"
 	resp, err := http.Get(latestReleaseUrl)
 	if err != nil {
@@ -37,14 +39,7 @@ func main() {
 		panic(err)
 	}
 
-	// get the version from version.txt
-
-	data, err := os.ReadFile("version.txt")
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("Updated to version: ", string(data))
+	fmt.Println("Updated to version: ", version)
 }
 
 func doUpdate(url string) error {
