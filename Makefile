@@ -31,14 +31,10 @@ release: build
 	@if [ -z "$(GITHUB_TOKEN)" ]; then \
 			echo "GITHUB_TOKEN must be set in the environment or .env file"; \
 			exit 1; \
-		fi
+	fi
 	@if [ -n "$$(git status --porcelain)" ]; then \
 			echo "Git working directory is dirty. Commit or stash your changes before releasing."; \
 			exit 1; \
-		fi
-	@if [ -z "$(version)" ] || [ -z "$(message)" ]; then \
-		echo "Usage: make release version=<version> message=<message>"; \
-		exit 1; \
 	fi
 	@version=$$(cat version.txt); \
 	@message="Release v$$version"; \
