@@ -40,6 +40,8 @@ release: build
 		echo "Usage: make release version=<version> message=<message>"; \
 		exit 1; \
 	fi
-	git tag -a $(version) -m "$(message)"
+	@version=$$(cat version.txt); \
+	@message="Release v$$version"; \
+	git tag -a $$version -m "$$message"
 	git push origin $(version)
 	GITHUB_TOKEN=$(GITHUB_TOKEN) goreleaser release --clean
