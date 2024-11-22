@@ -1,0 +1,5 @@
+bin
+.env
+dist/
+mem.prof
+cpu.prof
