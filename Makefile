@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build
-.PHONY: fmt vet clean build dev release release-snapshot sim
+.PHONY: fmt vet clean build dev release release-snapshot
 
-APP_NAME := mmcli
+APP_NAME := tester
 BUILD_DIR := bin
 MAIN_FILE := ./cmd/$(APP_NAME)
 
