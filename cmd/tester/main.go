@@ -14,7 +14,7 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Update successful")
+	fmt.Println("Update successful, version 0.0.5 now!")
 }
 
 func doUpdate(url string) error {
