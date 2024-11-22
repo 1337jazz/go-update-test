@@ -36,7 +36,7 @@ release: build
 			echo "Git working directory is dirty. Commit or stash your changes before releasing."; \
 			exit 1; \
 	fi
-	@version=$$(cat version.txt); \
+	@version=$$(cat $(bin)/$(BUILD_DIR)/version.txt); \
 	message="Release v$$version"; \
 	git tag -a $$version -m "$$message"
 	git push origin $(version)
